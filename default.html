@@ -1,0 +1,493 @@
+<html lang="zh-CN"><head><link rel="stylesheet" type="text/css" href="http://www.gaode.com/theme/v1.3/style1.3.8.1.16.css">
+        <meta charset="UTF-8">
+        <meta name="renderer" content="webkit|ie-comp|ie-stand"> 
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+
+        <meta name="Keywords" content="地图，高德地图，高德地图官网，amap地图，搜索地点，公交查询，驾车导航，中国地图，北京地图，街景地图，团购，优惠信息">
+        <meta name="Description" content="高德地图官方网站，提供全国地图浏览，地点搜索，公交驾车查询服务。可同时查看商家团购、优惠信息。高德地图，您的出行、生活好帮手。">
+        <meta name="robots" content="noodp">
+
+        <title>
+            高德地图
+        </title>
+        <script type="text/javascript">     
+
+            if(/mobile/i.test(navigator.userAgent)){ location.href = "http://m.amap.com"; } 
+            if(!document.all){ //IE11 or other
+                console.log("@map.version = 2.0");
+            } else { //IE6-10
+                
+                if (window.navigator.appName !== 'Microsoft Internet Explorer') {
+                    //非IE
+                } else {
+
+                    var mode = 5;
+
+                    if (document.documentMode) {
+                        mode = document.documentMode;
+                    } else if (document.compatMode) {
+                        if (document.compatMode === 'CSS1Compat') {
+                            mode = 7;
+                        }
+                    }
+
+                    var rv = -1,
+                        ua = navigator.userAgent;
+                    var re = new RegExp('MSIE ([0-9]{1,}[\\.0-9]{0,})');
+                    if (re.exec(ua) !== null) {
+                        rv = parseFloat(RegExp.$1);
+                    }
+
+                    var v = 11;
+
+                    //IE11
+                    if (mode < v || rv < v) {
+                        location.href = "http://map.amap.com";
+                    }
+                    
+                }
+            }
+
+        </script>
+        <link rel="stylesheet" href="http://www.gaode.com/assets/lib.min.e48e81f3.css">
+        <link rel="stylesheet" href="http://www.gaode.com/assets/biz.min.53ffaafa.css">
+
+    <script type="text/javascript" async="" src="//g.alicdn.com/alilog/mlog/??spm.js,spmact.js?v=141204"></script><style type="text/css">.amap-container{cursor:url(http://webapi.amap.com/theme/v1.3/openhand.cur),default;}.amap-drag{cursor:url(http://webapi.amap.com/theme/v1.3/closedhand.cur),default;}</style><script type="text/javascript" charset="utf-8" src="http://webapi.amap.com/count?v=1.3&amp;k=bfe31f4e0fb231d29e1d3ce951e2c780&amp;t=1440494824106&amp;lang=zh_cn&amp;encode=UTF-8&amp;u=http://www.gaode.com/"></script><script type="text/javascript" async="" src="//g.alicdn.com/sd/data_sufei/1.4.5/aplus/index.js"></script></head>
+    <body>
+        
+        <!-- 搜索框 + 复层 
+        <div class="mainbox">
+        -->
+            
+            <!-- 搜索框 -->
+            <section class="search">
+                <header class="searchbox amap0 zdeps-3">
+                    <img src="http://www.gaode.com/assets/img/amap.png" class="usel logo" draggable="false">
+                    <div class="iptbox">
+                        <em></em>
+                        <input type="text" id="searchipt" class="transit" maxlength="256" autocomplete="off">
+                        <input type="text" id="searchplaceholder" autocomplete="off">
+                        <span id="searchloading" class="fa-spin"></span>
+                        <div id="searchbtn" class="transit">
+                            <i class="fa fa-search searchlogo transit"></i>
+                        </div>
+                    </div>
+                <div class="theonlysug main-sug autocomplete-suggestions" style="position: absolute; display: none; width: 266px; max-height: 350px; z-index: 2199;"></div></header>
+                <div class="amap-panctrl amap-panctrl-down usel" style="display: none;">
+                    <i class="fa fa-chevron-down"></i>
+                </div>
+                <div class="dtrigger dragtop"></div>
+                <div class="dtrigger dragbottom"></div>
+                <div class="dtrigger dragleft"></div>
+                <div class="dtrigger dragright"></div>
+            </section>
+            
+            <!-- 浮层 -->
+            <div id="amapbox" class="zdeps-1" style="display: block;">
+                <!-- <section class="amap-panels-blur"></section> -->
+                <section id="amap-panels">
+                    <div id="index-panel" style="display: block;">
+
+                        <ul id="nav" clas="usel">
+                            <li class="active transit" fwd="index">
+                                <span class="dirico"></span>
+                                <span class="nav-txt">路线</span>
+                            </li>
+                            <li class="transit" fwd="around">
+                                <i class="fa fa-search"></i>
+                                <span class="nav-txt">热搜</span>
+                            </li>
+                            <li class="transit" fwd="faves">
+                                <span class="starico"></span>
+                                <span class="nav-txt">收藏</span>
+                            </li>
+                        </ul>
+                        <!-- 以下为路线规划 -->
+
+                        <div id="indexbox">
+
+                            <div class="content">        
+                                
+                                <!-- 线路规划 -->        
+                                <div id="planForm">
+                                    
+                                    <!-- tab -->
+                                    <ul class="tabs col3 z-depth-1 clearfix" id="trafficTab">
+                                        <li>
+                                            <a id="carTab" class="icon-car current" href="javascript:void(0)" data-type="car">驾车</a>
+                                        </li>
+                                        <li>
+                                            <a id="busTab" class="icon-bus " href="javascript:void(0)" data-type="bus">公交</a>
+                                        </li>
+                                        <li>
+                                            <a id="walkTab" class="icon-walk" href="javascript:void(0)" data-type="walk">步行</a>
+                                        </li>                
+                                    </ul>
+
+                                    <!-- 线路查询 -->
+                                    <div class="line-search">
+                                        <div class="line-search-left">
+                                            <a class="icon-updown" title="互换地点"></a>
+                                        </div>
+                                        <div class="line-search-form">
+                                            <p class="line-search-start">
+                                                <label>起 :</label>
+                                                <input type="text" placeholder="请输入起点" value="" autocomplete="off" class="blue">
+                                                <a class="localSug">我的位置</a>
+                                            </p>
+                                            <div class="passList">
+                                                <p class="line-search-point none" index="0">
+                                                    <label>经 :</label>
+                                                    <input type="text" placeholder="请输入途经点" autocomplete="off">
+                                                    <!-- <em class="icon-drag"></em> -->
+                                                    <a class="icon-reduce"></a>                        
+                                                </p>
+                                                <p class="line-search-point none" index="1">
+                                                    <label>经 :</label>
+                                                    <input type="text" placeholder="请输入途经点" autocomplete="off">
+                                                    <!-- <em class="icon-drag"></em> -->
+                                                    <a class="icon-reduce"></a>                        
+                                                </p>
+                                                 <p class="line-search-point none" index="2">
+                                                    <label>经 :</label>
+                                                    <input type="text" placeholder="请输入途经点" autocomplete="off">
+                                                    <!-- <em class="icon-drag"></em> -->
+                                                    <a class="icon-reduce"></a>                        
+                                                </p>                
+                                            </div>
+
+                                            <p class="line-search-end">
+                                                <label>终 :</label>
+                                                <input type="text" placeholder="请输入终点" value="" autocomplete="off">
+                                                <a class="localSug">我的位置</a>
+                                            </p>                    
+                                            <p class="line-search-submit">
+                                                <a href="javascript:void(0)" class="line-search-clear none">清除路线</a>
+                                                <button>查询路线</button>
+                                                <span class="fa-spin"></span>
+                                            </p>
+                                        </div>
+                                        <div class="line-search-right">
+                                            <a class="icon-add" title="增加途经点"></a>
+                                        </div>                
+                                    </div>
+
+                                </div>
+
+                                <!-- 搜索历史 -->
+                                <div class="dirHistory" id="dirHistory">
+                                    <h2>路线搜索记录</h2>
+                                    <a class="clear" href="javascript:void(0)">删除记录</a>                                    
+                                    <ul>
+                                        <!-- <li data-index="1">我的位置 → 方恒国际中心A座</li>
+                                        <li data-index="2">我的位置 → 方恒国际中心A座</li>
+                                        <li data-index="3">朝阳区阜通东大街方恒国际中心Ａ座 → 苏州街大恒科技</li> -->
+                                    </ul>
+                                </div>
+
+                                <!-- 准确选择 -->
+                                <div class="choose-poi" id="choosePoi">
+                                    <!-- 选择起点列表 -->
+                                    <div id="fromPoiList" class="choose-poi-list expand-content"></div>
+                                    <!-- 途经点列表 -->
+                                    <div class="viaPoiList choose-poi-list" id="viaPoiList0"></div>
+                                    <!-- 第二个途经点列表 -->
+                                    <div class="viaPoiList choose-poi-list" id="viaPoiList1"></div>
+                                    <!-- 第三个途经点列表 -->
+                                    <div class="viaPoiList choose-poi-list" id="viaPoiList2"></div>
+                                    <!-- 选择终点列表 -->
+                                    <div id="toPoiList" class="choose-poi-list"></div>            
+                                </div>
+
+                                <!-- 方案列表 -->
+                                <div id="planList">
+                                    
+                                </div> 
+
+                                <div id="amap-result-banner">
+                                    <div id="mobileenterance" data-spm-protocol="i">
+                                        <img class="bannerQrcode" src="http://www.gaode.com/assets/img/bannerQrcode.png">
+                                        <a class="android">Android版</a>
+                                        <a class="ios" href="http://m.amap.com/callAPP?mo=http%3A%2F%2Fwap.amap.com%2F%3Ftype%3Dpc%26from%3Dbanner%26os%3Di&amp;src=pc_bi" target="_blank">iPhone版</a>
+                                    </div>
+                                    <h4 id="alibaba">阿里巴巴集团旗下</h4>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="search-panel" style="display: none;"></div>
+                    <div id="around-panel" style="display: none;">
+                        <ul id="nav" clas="usel">
+                            <li class="transit" fwd="index">
+                                <span class="dirico"></span>
+                                <span class="nav-txt">路线</span>
+                            </li>
+                            <li class="active transit" fwd="around">
+                                <i class="fa fa-search"></i>
+                                <span class="nav-txt">热搜</span>
+                            </li>
+                            <li class="transit" fwd="faves">
+                                <span class="starico"></span>
+                                <span class="nav-txt">收藏</span>
+                            </li>
+                        </ul>
+                        <div id="aroundbox">
+                            
+                            <h3 id="o2o-title">搜索本地生活，尝试搜索</h3>
+                            <ul id="o2o-local" class="usel">
+                                <li>
+                                    <img src="http://www.gaode.com/assets/img/indexicon/restaurant.png" alt="美食">
+                                    <span>美食</span>
+                                </li>
+                                <li>
+                                    <img src="http://www.gaode.com/assets/img/indexicon/hotel.png" alt="酒店">
+                                    <span>酒店</span>
+                                </li>
+                                <li>
+                                    <img src="http://www.gaode.com/assets/img/indexicon/station.png" alt="火车站">
+                                    <span>火车站</span>
+                                </li>
+                                <li>
+                                    <img src="http://www.gaode.com/assets/img/indexicon/cinema.png" alt="电影院">
+                                    <span>电影院</span>
+                                </li>
+                            </ul>
+
+                            <ul id="o2o-life">
+                                <li>
+                                    <img src="http://www.gaode.com/assets/img/indexicon/outing.png" alt="">
+                                    <span class="title">出行</span>
+
+                                    <span class="spq">公交站</span>
+                                    <span class="spq">地铁站</span>
+                                    <span class="spq">火车站</span>
+                                    <span class="spq">加油站</span>
+                                </li>
+                                <li>
+                                    <img src="http://www.gaode.com/assets/img/indexicon/entertain.png" alt="">
+                                    <span class="title">娱乐</span>
+                                    <span class="spq">景点</span>
+                                    <span class="spq">KTV</span>
+                                    <span class="spq">丽人</span>
+                                    <span class="spq">洗浴</span>
+                                </li>
+                                <li>
+                                    <img src="http://www.gaode.com/assets/img/indexicon/coffee.png" alt="">
+                                    <span class="title">服务</span>
+                                    <span class="spq">银行</span>
+                                    <span class="spq">超市</span>
+                                    <span class="spq">酒店</span>
+                                    <span class="spq">ATM</span>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div id="faves-panel" style="display: none;"><ul id="nav" clas="usel">
+	<li class="transit" fwd="index">
+		<span class="dirico"></span>
+		<span class="nav-txt">路线</span>
+	</li>
+	<li class="transit" fwd="around">
+		<i class="fa fa-search"></i>
+		<span class="nav-txt">热搜</span>
+	</li>
+	<li class="active transit" fwd="faves">
+		<span class="starico"></span>
+		<span class="nav-txt">收藏</span>
+	</li>
+</ul>
+<div id="favesbox">
+	
+     <h3 class="infotitle"><i class="infoico"></i>您还未登录</h3>
+	<p>登录后即可查看您在任何设备收藏的地点和路线,省时省力!</p>
+     <p class="infoimgbox">
+          <img src="http://www.gaode.com/assets/img/faveslogout.png" alt="">
+     </p>
+	<p class="infobtnbox">
+	    <a href="http://id.amap.com/?type=spa&amp;ref=http://www.gaode.com&amp;dip=11060" target="_blank" class="infologin">登录</a>
+	</p>
+
+</div></div>
+                </section>
+                <div id="amap-banner" style="display: block;">
+                    <div id="mobileenterance" data-spm-protocol="i">
+                        <img class="bannerQrcode" src="http://www.gaode.com/assets/img/bannerQrcode.png">
+                        <a class="android">Android版</a>
+                        <a class="ios" href="http://m.amap.com/callAPP?mo=http%3A%2F%2Fwap.amap.com%2F%3Ftype%3Dpc%26from%3Dbanner%26os%3Di&amp;src=pc_bi" target="_blank">iPhone版</a>
+                    </div>
+                    <h4 id="alibaba">阿里巴巴集团旗下</h4>
+                </div>
+
+                <footer id="amap-links">
+                    <a href="http://gxd.amap.com/" target="_blank">高德淘金</a>
+                    <i class="sep"></i>
+                    <a href="http://lbs.amap.com/" target="_blank">地图API</a>
+                    <i class="sep"></i>
+                    <a href="http://map.amap.com/about/index.html" target="_blank">关于我们</a>
+                    <i class="sep"></i>
+                    <a href="http://map.amap.com/help/index.html" target="_blank">意见建议</a>
+                </footer>
+                    
+                <div class="amap-panctrl amap-panctrl-up usel">
+                    <i class="fa fa-chevron-up"></i>
+                </div>
+
+            </div>
+
+        <!-- </div> -->
+
+        <!-- <div id="citybox" class="zdeps-1">
+            <div class="city-title usel">
+                <b>北京</b>
+                <i class="fa fa-caret-down transit"></i>
+            </div>
+            <div class="weatherinfo usel">
+                <img src="http://www.gaode.com/assets/img/loc_ing.png" class="fa-spin" width="16" height="16" alt="查询中...">
+            </div>
+            <div class="city-panel zdeps-2 usel"></div>
+        </div> -->
+        
+        <!-- 用户相关 -->
+        <div id="loginbox" class="usel loginbox" style="left: 1850px; top: 15px;"><div class="defuser userbox">
+	<a href="http://id.amap.com/?type=spa&amp;ref=http://www.gaode.com&amp;dip=11060" target="_blank">
+		<span title="登录" class="avatar"></span>
+	</a>
+    <!--
+    <div class="defctrl ctrlbox zdeps-1">
+        <i class="deficon"></i>
+        <a href="http://id.amap.com/?type=spa&ref=http://ditu.amap.com/" class="defdologin" target="_blank">登录</a>
+        <span></span>
+        <a href="http://id.amap.com/member" target="_blank">注册</a>
+    </div>
+    -->
+</div></div>
+
+        <!-- 底图 -->
+        <div id="themap" class="amap-container amap-drag" style="cursor: url(http://www.gaode.com/theme/v1.3/openhand.cur), default;"><div class="amap-maps"><div class="amap-drags"><div class="amap-layers" style="-webkit-transform: translateZ(0px); width: 1920px; height: 979px; overflow: hidden;"><div style="position: absolute; z-index: 0; top: 695.5px; left: -99px;"><canvas height="256" width="256" style="position: absolute; top: 28px; left: 632px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -228px; left: 632px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -484px; left: 632px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -740px; left: 632px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: 28px; left: 376px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -228px; left: 376px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -484px; left: 376px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -740px; left: 376px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: 28px; left: 120px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -228px; left: 120px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -484px; left: 120px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -740px; left: 120px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: 28px; left: -136px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -228px; left: -136px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -484px; left: -136px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -740px; left: -136px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: 28px; left: 888px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -228px; left: 888px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -484px; left: 888px; width: 256px; height: 256px; z-index: 14;"></canvas><canvas height="256" width="256" style="position: absolute; top: -740px; left: 888px; width: 256px; height: 256px; z-index: 14;"></canvas></div><canvas width="960" height="899" style="position: absolute; z-index: 111; height: 899px; width: 960px; top: -0.5px; left: 0px;"></canvas><div style="position: absolute; z-index: 120; top: 695.5px; left: -99px;"><div class="amap-marker" style="top: -259px; left: 566px; z-index: 100; -webkit-transform: translate(13px, 13px) rotate(0deg) translate(-13px, -13px); display: block;"><div class="amap-icon" style="position: absolute; overflow: inherit; width: 36px; height: 36px; opacity: 1;"><img src="http://www.gaode.com/assets/img/loc.png" style="top: 0px; left: 0px;"></div></div></div><canvas width="1920" height="979" style="position: absolute; z-index: 110; height: 979px; width: 1920px; top: -40.5px; left: -480px;"></canvas></div><div class="amap-overlays"><div class="amap-info" style="position: absolute; left: 430.00000000039px; top: 449.5px;"><div style="position: absolute; bottom: 13px; left: 0px;"><div><div id="locInfoWindow" class="infowindow-wrap-s usel"><div class="infowindow-body-s"><div class="loctip">我的位置 <i class="fa fa-chevron-right"></i></div></div><div class="infowindow-foot"></div></div></div></div></div></div></div></div><div style="display: none;"></div><div class="amap-controls"><div class="amap-scalecontrol" style="left: 2px; bottom: 20px; visibility: visible;"><div class="amap-scale-text" style="width: 69.2555291143728px;">500米</div><div class="amap-scale-line"><div class="amap-scale-edgeleft"></div><div class="amap-scale-edgeright" style="left: 62.2555291143728px;"></div><div class="amap-scale-middle" style="width: 61.2555291143728px;"></div></div></div></div><a class="amap-logo" href="http://amap.com" target="_blank"><img src="http://www.gaode.com/theme/v1.3/autonavi.png"></a><div class="amap-copyright">©2015 高德软件 审图号GS(2014)6002号 | 京ICP证 070711号 | 甲测资字11002004</div></div>
+
+        <!-- 定位工具 + Bar -->
+        <div id="maptoolbox" class="maptoolbox" style="left: 1872px; top: 716px;">
+            <div class="dtrigger dragtop"></div>
+            <div class="dtrigger dragbottom"></div>
+            <div class="dtrigger dragleft"></div>
+            <div class="dtrigger dragright"></div>
+            
+            <div id="locbox" class="zdeps-1 usel">
+                <img src="http://www.gaode.com/assets/img/loc_ing.png" class="fa-spin locating" style="display: none;">
+                <img src="http://www.gaode.com/assets/img/loc_ok.png" class="locicon locok" title="我的位置" style="display: inline;">
+                <img src="http://www.gaode.com/assets/img/loc_fail.png" class="locicon locfail" title="定位失败">
+            </div>
+        <div class="amap-toolbar" style="right: 24px; bottom: auto; visibility: visible;"><div class="amap-pancontrol" style="position: relative; display: none;"><div class="amap-pan-left"></div><div class="amap-pan-top"></div><div class="amap-pan-right"></div><div class="amap-pan-bottom"></div></div><div class="amap-locate" style="position: relative; left: 17px; display: none;"></div><div class="amap-zoomcontrol" style="position: relative; left: 14px;"><div class="amap-zoom-plus"></div><div class="amap-zoom-ruler" style="display: block;"><div class="amap-zoom-mask" style="height: 36px;"></div><div class="amap-zoom-cursor" style="top: 36px;"></div><div class="amap-zoom-labels"><div class="amap-zoom-label-street"></div><div class="amap-zoom-label-city"></div><div class="amap-zoom-label-province"></div><div class="amap-zoom-label-country"></div></div></div><div class="amap-zoom-minus"></div></div></div></div>
+        
+
+        <!-- 地图工具-图层 -->
+        <div class="layerbox usel zdeps-1" style="left: 1485px; top: 15px;">
+            <div class="tooldragbar tooldragup"></div>
+            <div class="tooldragbar tooldragdown"></div>
+            <div class="tooldragbar tooldragleft"></div>
+            <div class="tooldragbar tooldragright"></div>
+            <div id="layerbox">
+                <!-- 城市 -->
+                <div class="layer_item city-title usel" type="city">
+                    <span title="城市选择">
+                        <b>苏州</b>
+                        <i class="fa fa-caret-down transit"></i>
+                    </span>
+                </div> 
+                <!-- 天气 -->
+                <div class="layer_item weatherinfo usel" type="weather">
+                    <span title="天气" init="true">23/30℃</span>
+                    <!-- <i class="fa fa-spin fa-refresh"></i> -->
+                </div>
+                <!-- 城市选择器 -->
+                <div class="city-panel zdeps-2 usel" style="padding: 6px 15px 15px; white-space: nowrap; overflow: hidden; zoom: 1; width: 420px; height: 406px; line-height: 26px; z-index: 9999; display: none; position: absolute; background: rgb(255, 255, 255);"><header class="city-header">选择城市<span class="city-panel-close"><i class="fa fa-close"></i></span></header><ul class="city-hotlist"><li adcode="100000">全国</li><li adcode="110000">北京</li><li adcode="310000">上海</li><li adcode="440100">广州</li><li adcode="440300">深圳</li><li adcode="510100">成都</li><li adcode="210100">沈阳</li><li adcode="320500">苏州</li><li adcode="410100">郑州</li><li adcode="370200">青岛</li><li adcode="120000">天津</li><li adcode="500000">重庆</li><li adcode="420100">武汉</li><li adcode="330100">杭州</li><li adcode="610100">西安</li><li adcode="320100">南京</li><li adcode="210200">大连</li><li adcode="430100">长沙</li></ul><section class="city-search"><input class="city-search-suggstion" type="text" autocomplete="off"><button class="city-search-btn">搜索城市</button></section><section class="citylist"><h3 class="citylist-title">城市列表</h3><div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 230px;"><ul class="cirylist-scroll" style="overflow: hidden; width: auto; height: 230px;"><div class="citylist-province">河北</div><div class="citylist-city"><span adcode="130100">石家庄</span><span adcode="130600">保定</span><span adcode="130900">沧州</span><span adcode="130800">承德</span><span adcode="130400">邯郸</span><span adcode="131100">衡水</span><span adcode="131000">廊坊</span><span adcode="130300">秦皇岛</span><span adcode="130200">唐山</span><span adcode="130500">邢台</span><span adcode="130700">张家口</span></div><div class="citylist-province">山西</div><div class="citylist-city"><span adcode="140100">太原</span><span adcode="140400">长治</span><span adcode="140200">大同</span><span adcode="140500">晋城</span><span adcode="140700">晋中</span><span adcode="141000">临汾</span><span adcode="141100">吕梁</span><span adcode="140600">朔州</span><span adcode="140900">忻州</span><span adcode="140300">阳泉</span><span adcode="140800">运城</span></div><div class="citylist-province">内蒙古</div><div class="citylist-city"><span adcode="150100">呼和浩特</span><span adcode="152900">阿拉善盟</span><span adcode="150200">包头</span><span adcode="150800">巴彦淖尔</span><span adcode="150400">赤峰</span><span adcode="150600">鄂尔多斯</span><span adcode="150700">呼伦贝尔</span><span adcode="150500">通辽</span><span adcode="150300">乌海</span><span adcode="150900">乌兰察布</span><span adcode="152500">锡林郭勒盟</span><span adcode="152200">兴安盟</span></div><div class="citylist-province">辽宁</div><div class="citylist-city"><span adcode="210100">沈阳</span><span adcode="210300">鞍山</span><span adcode="210500">本溪</span><span adcode="211300">朝阳</span><span adcode="210200">大连</span><span adcode="210600">丹东</span><span adcode="210400">抚顺</span><span adcode="210900">阜新</span><span adcode="211400">葫芦岛</span><span adcode="210700">锦州</span><span adcode="211000">辽阳</span><span adcode="211100">盘锦</span><span adcode="211200">铁岭</span><span adcode="210800">营口</span></div><div class="citylist-province">吉林</div><div class="citylist-city"><span adcode="220100">长春</span><span adcode="220800">白城</span><span adcode="220600">白山</span><span adcode="220200">吉林</span><span adcode="220400">辽源</span><span adcode="220300">四平</span><span adcode="220700">松原</span><span adcode="220500">通化</span><span adcode="222400">延边朝鲜族自治州</span></div><div class="citylist-province">黑龙江</div><div class="citylist-city"><span adcode="230100">哈尔滨</span><span adcode="230600">大庆</span><span adcode="232700">大兴安岭</span><span adcode="230400">鹤岗</span><span adcode="231100">黑河</span><span adcode="230800">佳木斯</span><span adcode="230300">鸡西</span><span adcode="231000">牡丹江</span><span adcode="230200">齐齐哈尔</span><span adcode="230900">七台河</span><span adcode="230500">双鸭山</span><span adcode="231200">绥化</span><span adcode="230700">伊春</span></div><div class="citylist-province">江苏</div><div class="citylist-city"><span adcode="320100">南京</span><span adcode="320400">常州</span><span adcode="320800">淮安</span><span adcode="320700">连云港</span><span adcode="320600">南通</span><span adcode="321300">宿迁</span><span adcode="320500">苏州</span><span adcode="321200">泰州</span><span adcode="320200">无锡</span><span adcode="320300">徐州</span><span adcode="320900">盐城</span><span adcode="321000">扬州</span><span adcode="321100">镇江</span></div><div class="citylist-province">浙江</div><div class="citylist-city"><span adcode="330100">杭州</span><span adcode="330500">湖州</span><span adcode="330400">嘉兴</span><span adcode="330700">金华</span><span adcode="331100">丽水</span><span adcode="330200">宁波</span><span adcode="330800">衢州</span><span adcode="330600">绍兴</span><span adcode="331000">台州</span><span adcode="330300">温州</span><span adcode="330900">舟山</span></div><div class="citylist-province">安徽</div><div class="citylist-city"><span adcode="340100">合肥</span><span adcode="340800">安庆</span><span adcode="340300">蚌埠</span><span adcode="341600">亳州</span><span adcode="341700">池州</span><span adcode="341100">滁州</span><span adcode="341200">阜阳</span><span adcode="340600">淮北</span><span adcode="340400">淮南</span><span adcode="341000">黄山</span><span adcode="341500">六安</span><span adcode="340500">马鞍山</span><span adcode="341300">宿州</span><span adcode="340700">铜陵</span><span adcode="340200">芜湖</span><span adcode="341800">宣城</span></div><div class="citylist-province">福建</div><div class="citylist-city"><span adcode="350100">福州</span><span adcode="350800">龙岩</span><span adcode="350700">南平</span><span adcode="350900">宁德</span><span adcode="350300">莆田</span><span adcode="350500">泉州</span><span adcode="350400">三明</span><span adcode="350200">厦门</span><span adcode="350600">漳州</span></div><div class="citylist-province">江西</div><div class="citylist-city"><span adcode="360100">南昌</span><span adcode="361000">抚州</span><span adcode="360700">赣州</span><span adcode="360800">吉安</span><span adcode="360200">景德镇</span><span adcode="360400">九江</span><span adcode="360300">萍乡</span><span adcode="361100">上饶</span><span adcode="360500">新余</span><span adcode="360900">宜春</span><span adcode="360600">鹰潭</span></div><div class="citylist-province">山东</div><div class="citylist-city"><span adcode="370100">济南</span><span adcode="371600">滨州</span><span adcode="371400">德州</span><span adcode="370500">东营</span><span adcode="371700">菏泽</span><span adcode="370800">济宁</span><span adcode="371200">莱芜</span><span adcode="371500">聊城</span><span adcode="371300">临沂</span><span adcode="370200">青岛</span><span adcode="371100">日照</span><span adcode="370900">泰安</span><span adcode="370700">潍坊</span><span adcode="371000">威海</span><span adcode="370600">烟台</span><span adcode="370400">枣庄</span><span adcode="370300">淄博</span></div><div class="citylist-province">河南</div><div class="citylist-city"><span adcode="410100">郑州</span><span adcode="410500">安阳</span><span adcode="410600">鹤壁</span><span adcode="410800">焦作</span><span adcode="419001">济源</span><span adcode="410200">开封</span><span adcode="411100">漯河</span><span adcode="410300">洛阳</span><span adcode="411300">南阳</span><span adcode="410400">平顶山</span><span adcode="410900">濮阳</span><span adcode="411200">三门峡</span><span adcode="411400">商丘</span><span adcode="410700">新乡</span><span adcode="411500">信阳</span><span adcode="411000">许昌</span><span adcode="411600">周口</span><span adcode="411700">驻马店</span></div><div class="citylist-province">湖北</div><div class="citylist-city"><span adcode="420100">武汉</span><span adcode="422800">恩施土家族苗族自治州</span><span adcode="420700">鄂州</span><span adcode="421100">黄冈</span><span adcode="420200">黄石</span><span adcode="420800">荆门</span><span adcode="421000">荆州</span><span adcode="429005">潜江</span><span adcode="429021">神农架林区</span><span adcode="420300">十堰</span><span adcode="421300">随州</span><span adcode="429006">天门</span><span adcode="420600">襄阳</span><span adcode="421200">咸宁</span><span adcode="429004">仙桃</span><span adcode="420900">孝感</span><span adcode="420500">宜昌</span></div><div class="citylist-province">湖南</div><div class="citylist-city"><span adcode="430100">长沙</span><span adcode="430700">常德</span><span adcode="431000">郴州</span><span adcode="430400">衡阳</span><span adcode="431200">怀化</span><span adcode="431300">娄底</span><span adcode="430500">邵阳</span><span adcode="430300">湘潭</span><span adcode="433100">湘西土家族苗族自治州</span><span adcode="430900">益阳</span><span adcode="431100">永州</span><span adcode="430600">岳阳</span><span adcode="430800">张家界</span><span adcode="430200">株洲</span></div><div class="citylist-province">广东</div><div class="citylist-city"><span adcode="440100">广州</span><span adcode="445100">潮州</span><span adcode="441900">东莞</span><span adcode="440600">佛山</span><span adcode="441600">河源</span><span adcode="441300">惠州</span><span adcode="440700">江门</span><span adcode="445200">揭阳</span><span adcode="440900">茂名</span><span adcode="441400">梅州</span><span adcode="441800">清远</span><span adcode="440500">汕头</span><span adcode="441500">汕尾</span><span adcode="440200">韶关</span><span adcode="440300">深圳</span><span adcode="441700">阳江</span><span adcode="445300">云浮</span><span adcode="440800">湛江</span><span adcode="441200">肇庆</span><span adcode="442000">中山</span><span adcode="440400">珠海</span></div><div class="citylist-province">广西</div><div class="citylist-city"><span adcode="450100">南宁</span><span adcode="451000">百色</span><span adcode="450500">北海</span><span adcode="451400">崇左</span><span adcode="450600">防城港</span><span adcode="450800">贵港</span><span adcode="450300">桂林</span><span adcode="451200">河池</span><span adcode="451100">贺州</span><span adcode="451300">来宾</span><span adcode="450200">柳州</span><span adcode="450700">钦州</span><span adcode="450400">梧州</span><span adcode="450900">玉林</span></div><div class="citylist-province">海南</div><div class="citylist-city"><span adcode="460100">海口</span><span adcode="460200">三亚</span></div><div class="citylist-province">四川</div><div class="citylist-city"><span adcode="510100">成都</span><span adcode="513200">阿坝藏族羌族自治州</span><span adcode="511900">巴中</span><span adcode="511700">达州</span><span adcode="510600">德阳</span><span adcode="513300">甘孜藏族自治州</span><span adcode="511600">广安</span><span adcode="510800">广元</span><span adcode="511100">乐山</span><span adcode="513400">凉山彝族自治州</span><span adcode="510500">泸州</span><span adcode="511400">眉山</span><span adcode="510700">绵阳</span><span adcode="511300">南充</span><span adcode="511000">内江</span><span adcode="510400">攀枝花</span><span adcode="510900">遂宁</span><span adcode="511800">雅安</span><span adcode="511500">宜宾</span><span adcode="510300">自贡</span><span adcode="512000">资阳</span></div><div class="citylist-province">贵州</div><div class="citylist-city"><span adcode="520100">贵阳</span><span adcode="520400">安顺</span><span adcode="520500">毕节</span><span adcode="520200">六盘水</span><span adcode="522600">黔东南苗族侗族自治州</span><span adcode="522700">黔南布依族苗族自治州</span><span adcode="522300">黔西南布依族苗族自治州</span><span adcode="520600">铜仁</span><span adcode="520300">遵义</span></div><div class="citylist-province">云南</div><div class="citylist-city"><span adcode="530100">昆明</span><span adcode="530500">保山</span><span adcode="532300">楚雄彝族自治州</span><span adcode="532900">大理白族自治州</span><span adcode="533100">德宏傣族景颇族自治州</span><span adcode="533400">迪庆藏族自治州</span><span adcode="532500">红河哈尼族彝族自治州</span><span adcode="530700">丽江</span><span adcode="530900">临沧</span><span adcode="533300">怒江傈僳族自治州</span><span adcode="530800">普洱</span><span adcode="530300">曲靖</span><span adcode="532600">文山壮族苗族自治州</span><span adcode="532800">西双版纳傣族自治州</span><span adcode="530400">玉溪</span><span adcode="530600">昭通</span></div><div class="citylist-province">西藏</div><div class="citylist-city"><span adcode="540100">拉萨</span><span adcode="542500">阿里</span><span adcode="542100">昌都</span><span adcode="542600">林芝</span><span adcode="542400">那曲</span><span adcode="542300">日喀则</span><span adcode="542200">山南</span></div><div class="citylist-province">陕西</div><div class="citylist-city"><span adcode="610100">西安</span><span adcode="610900">安康</span><span adcode="610300">宝鸡</span><span adcode="610700">汉中</span><span adcode="611000">商洛</span><span adcode="610200">铜川</span><span adcode="610500">渭南</span><span adcode="610400">咸阳</span><span adcode="610600">延安</span><span adcode="610800">榆林</span></div><div class="citylist-province">甘肃</div><div class="citylist-city"><span adcode="620100">兰州</span><span adcode="620400">白银</span><span adcode="621100">定西</span><span adcode="620200">嘉峪关</span><span adcode="620300">金昌</span><span adcode="620900">酒泉</span><span adcode="622900">临夏回族自治州</span><span adcode="621200">陇南</span><span adcode="620800">平凉</span><span adcode="621000">庆阳</span><span adcode="620500">天水</span><span adcode="620600">武威</span><span adcode="620700">张掖</span></div><div class="citylist-province">青海</div><div class="citylist-city"><span adcode="630100">西宁</span></div><div class="citylist-province">宁夏</div><div class="citylist-city"><span adcode="640100">银川</span><span adcode="640400">固原</span><span adcode="640200">石嘴山</span><span adcode="640300">吴忠</span><span adcode="640500">中卫</span></div><div class="citylist-province">新疆</div><div class="citylist-city"><span adcode="650100">乌鲁木齐</span><span adcode="652900">阿克苏</span><span adcode="654300">阿勒泰</span><span adcode="659002">阿拉尔</span><span adcode="652800">巴音郭楞蒙古自治州</span><span adcode="652700">博尔塔拉蒙古自治州</span><span adcode="652300">昌吉回族自治州</span><span adcode="653200">和田</span><span adcode="653100">喀什</span><span adcode="650200">克拉玛依</span><span adcode="652200">哈密</span><span adcode="654200">塔城</span><span adcode="659001">石河子</span><span adcode="659003">图木舒克</span><span adcode="652100">吐鲁番</span><span adcode="659004">五家渠</span></div></ul><div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div></section></div>
+                <!-- 路况 -->
+                <div class="layer_item traffic" type="traffic">
+                    <span>路况</span>
+                </div>
+                <!-- 街景 -->
+                <!--
+                <div class="layer_item pano" type="pano">
+                    <span title="街景"></span>
+                </div>
+                -->
+                <!-- 卫星图 -->
+                <div class="layer_item satellite" type="satellite">
+                    <span title="卫星图"></span>
+                </div>
+                <!-- 地铁 -->
+                <div class="layer_item subway" type="subway">
+                    <span title="地铁"></span>
+                </div>
+                <div class="tool_item ranging" type="ranging">
+                    <span title="测距"></span>
+                </div>
+                <!-- 标注 -->
+                <!-- <div class="tool_item mark" type="mark">
+                    <span title="标注"></span>
+                </div> -->
+                <!-- 截屏 -->
+                <!-- <div class="tool_item screenshot" type="screenshot">
+                    <span title="截屏"></span>
+                </div> -->
+                <!-- 全屏 -->
+                <div class="tool_item fullscreen notfull" type="fullscreen">
+                    <span title="全屏"></span>
+                </div>
+                <!-- pm2.5 -->
+                <!-- <div class="layer_item pm25" type="pm25">
+                    <span title="pm2.5"></span>
+                </div>
+                <div class="layer_item layermore" type="layermore">
+                    <span>
+                        更多
+                        <i class="fa fa-caret-down transit"></i>
+                    </span>
+
+                </div> -->
+                <div class="boxpanel traffic_panel zdeps-2">
+                    <div class="panel_header">
+                        <ul class="panel_tab">
+                            <li class="traffic_item active" id="traffic_current" type="current">实时</li>
+                            <li class="traffic_item" id="traffic_forecast" type="forecast">预测</li>
+                        </ul>
+                        <div class="traffic_tag">
+                            <span>畅通</span>
+                            <ul class="traffic_level">
+                                <li class="level_1"></li>
+                                <li class="level_2"></li>
+                                <li class="level_3"></li>
+                                <li class="level_4"></li>
+                            </ul>
+                            <span>拥堵</span>
+                        </div>
+                    </div>
+                    <div class="panel_body">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- modal -->
+        <div class="modal" id="modal"></div>
+        <!-- dirqrcode -->
+        <div class="dir_qr"></div>
+        <script type="text/javascript" src="http://g.alicdn.com/alilog/mlog/aplus_v2.js"></script>
+
+        <script src="http://www.gaode.com/assets/core.min.f471db86.js"></script><script type="text/javascript" src="http://www.gaode.com/maps?v=1.3&amp;key=bfe31f4e0fb231d29e1d3ce951e2c780&amp;callback=initTheMap"></script>
+
+        <script src="http://www.gaode.com/assets/plugin.min.9eabc54a.js"></script>
+        <script src="http://www.gaode.com/assets/index.min.136b904f.js"></script>
+        <script src="http://www.gaode.com/assets/biz.min.fec40859.js"></script>
+        <div style="display:none">
+        <script src="http://w.cnzz.com/q_stat.php?id=1255626299&amp;l=3" language="JavaScript"></script><script src="http://c.cnzz.com/core.php?web_id=1255626299&amp;l=3&amp;t=q" charset="utf-8" type="text/javascript"></script><a href="http://quanjing.cnzz.com" target="_blank" title="全景统计">全景统计</a>
+        </div><iframe src="http://w.cnzz.com/aidclient.php" width="0" height="0" style="display: none;" data-spm-act-id="0.0.0.i1.U4gSMG"></iframe>
+    
+    
+
+
+<div class="citypicker-autocomplete-suggestions" style="position: absolute; display: none; max-height: 300px; z-index: 9999;"></div><div class="autocomplete-suggestions  planform-suggestion" style="position: absolute; display: none; width: 255px; max-height: 550px; z-index: 9999;"></div><div class="autocomplete-suggestions  planform-suggestion" style="position: absolute; display: none; width: 255px; max-height: 550px; z-index: 9999;"></div><div class="autocomplete-suggestions  planform-suggestion" style="position: absolute; display: none; width: 255px; max-height: 550px; z-index: 9999;"></div><div class="autocomplete-suggestions  planform-suggestion" style="position: absolute; display: none; width: 255px; max-height: 550px; z-index: 9999;"></div><div class="autocomplete-suggestions  planform-suggestion" style="position: absolute; display: none; width: 255px; max-height: 550px; z-index: 9999;"></div></body></html>
